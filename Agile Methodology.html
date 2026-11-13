@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agile Methodology</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F8FC;--surface:#FFFFFF;--ink:#0F1B3D;--muted:#4A5675;--line:#DCE2F0;
+  --navy:#0F1B3D;--navy2:#18285A;--blue:#4F5BFF;--mint:#1FC9B0;--onnavy:#EAEEFF;--onnavy-muted:#A9B4DD;
+  --warn:#B4531F;--warnbg:#FFF3EA;
+  --display:'Sora',system-ui,sans-serif;--body:'Manrope',system-ui,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0A1026;--surface:#121B3A;--ink:#EAEEFF;--muted:#A9B4DD;--line:#25305A;--warn:#FFB487;--warnbg:#2A1D1A;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0A1026;--surface:#121B3A;--ink:#EAEEFF;--muted:#A9B4DD;--line:#25305A;--warn:#FFB487;--warnbg:#2A1D1A;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mint);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:84px 0}
+.lead{color:var(--muted);max-width:60ch;margin-top:14px}
+h2{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:700}
+
+/* hero */
+.hero{background:radial-gradient(1200px 600px at 85% -10%,#2A3CC4 0%,transparent 60%),linear-gradient(160deg,var(--navy2),var(--navy) 70%);color:var(--onnavy);padding:56px 0 96px;overflow:hidden}
+.bar{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;margin-bottom:72px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--mint)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,8vw,5rem);font-weight:800;letter-spacing:-.035em}
+.hero p{color:var(--onnavy-muted);font-size:1.15rem;max-width:46ch;margin-top:22px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 16px;font-size:.95rem;color:var(--onnavy);background:rgba(255,255,255,.06);text-decoration:none}
+.loop{width:100%;max-width:400px;justify-self:center}
+.ring{transform-origin:200px 200px;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.ring{animation:none}html{scroll-behavior:auto}}
+
+/* definition */
+.def{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.quote{font-family:var(--display);font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.4;font-weight:600;letter-spacing:-.015em}
+.values{display:grid;gap:12px}
+.values div{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:14px 18px}
+.values b{font-family:var(--display)}
+
+/* features */
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.grid{display:grid;gap:16px;margin-top:40px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.feat{padding:22px;border-radius:16px;background:var(--bg);border:1px solid var(--line)}
+.feat h3{font-size:1.05rem;font-weight:600}
+.ico{width:38px;height:38px;border-radius:11px;background:var(--navy);color:var(--mint);display:grid;place-items:center;margin-bottom:16px}
+.ico svg{width:20px;height:20px}
+.feat:nth-child(even) .ico{background:var(--blue);color:#fff}
+
+/* lifecycle */
+.life{list-style:none;padding:0;margin:48px 0 0;display:grid;grid-template-columns:repeat(6,1fr);position:relative}
+.life::before{content:"";position:absolute;top:21px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--blue),var(--mint));border-radius:3px}
+.life li{text-align:center;position:relative;padding:0 6px}
+.life .n{width:44px;height:44px;margin:0 auto 14px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:700;border:4px solid var(--bg);position:relative}
+.band .life .n{border-color:var(--surface)}
+.life li:nth-child(4) .n{background:var(--mint);color:var(--navy)}
+.life b{font-family:var(--display);display:block}
+.life span{font-size:.9rem;color:var(--muted);display:block;line-height:1.45;margin-top:4px}
+.loopnote{margin-top:36px;padding:16px 20px;border-radius:12px;background:var(--bg);border:1px dashed var(--blue);color:var(--muted)}
+
+/* pros / cons */
+.pros{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-top:40px}
+.pro{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;border-radius:14px;background:var(--surface);border:1px solid var(--line);font-weight:600;font-family:var(--display);font-size:.98rem}
+.tick{flex:none;width:24px;height:24px;border-radius:50%;background:var(--mint);color:var(--navy);display:grid;place-items:center;margin-top:1px}
+.tick svg{width:14px;height:14px}
+.cons{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.con{padding:28px;border-radius:18px;background:var(--warnbg);border:1px solid color-mix(in srgb,var(--warn) 35%,transparent)}
+.con h3{font-size:1.2rem;color:var(--warn);margin-bottom:10px}
+.con p{color:var(--ink)}
+
+/* suitable */
+.proj{padding:28px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.proj h3{font-size:1.2rem;margin-bottom:10px}
+.proj p{color:var(--muted);font-size:1rem}
+.tag{display:inline-block;margin-top:16px;font-size:.85rem;font-weight:600;color:var(--blue);background:color-mix(in srgb,var(--blue) 12%,transparent);padding:4px 12px;border-radius:999px}
+
+/* spotify */
+.spot{background:var(--navy);color:var(--onnavy)}
+.spot .lead{color:var(--onnavy-muted)}
+.spot-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:40px}
+.nest{position:relative;padding:22px;border-radius:26px;border:2px solid var(--blue);background:rgba(79,91,255,.1)}
+.nest>b{display:block;font-family:var(--display);margin-bottom:14px}
+.nest .sq{display:flex;flex-wrap:wrap;gap:8px;padding:14px;border-radius:16px;border:2px solid var(--mint);background:rgba(31,201,176,.1)}
+.nest .sq>b{width:100%;font-family:var(--display);font-size:.95rem}
+.nest .sq i{font-style:normal;background:var(--mint);color:var(--navy);font-weight:700;font-size:.85rem;border-radius:8px;padding:6px 12px;font-family:var(--display)}
+.guild{margin-top:14px;padding:12px 16px;border-radius:12px;border:2px dashed var(--onnavy-muted);font-size:.95rem;color:var(--onnavy-muted)}
+.terms{display:grid;gap:14px}
+.term{padding:18px 20px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14)}
+.term b{font-family:var(--display);color:var(--mint);display:block;margin-bottom:2px}
+.term span{color:var(--onnavy-muted);font-size:1rem}
+
+footer{padding:44px 0;text-align:center;color:var(--muted);font-size:.95rem}
+footer b{font-family:var(--display);color:var(--ink)}
+
+@media (max-width:900px){
+  .g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}
+  .hero-grid,.def,.spot-grid,.cons{grid-template-columns:1fr}
+  .loop{max-width:280px;order:-1}
+  .bar{margin-bottom:36px}
+  .life{grid-template-columns:1fr;gap:20px;margin-top:36px}
+  .life::before{top:0;bottom:0;left:21px;right:auto;width:3px;height:auto}
+  .life li{text-align:left;display:grid;grid-template-columns:44px 1fr;gap:0 16px;padding:0}
+  .life .n{margin:0;grid-row:span 2}
+  section{padding:60px 0}
+}
+@media (max-width:480px){.g4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="bar"><span class="dot"></span>Methodology guide</div>
+    <div class="hero-grid">
+      <div>
+        <h1>Agile methodology</h1>
+        <p>Build in small steps, listen to the customer, and adapt as you learn. Agile delivers working products faster and keeps teams ready for change.</p>
+        <div class="chips">
+          <a class="chip" href="#features">Key features</a>
+          <a class="chip" href="#lifecycle">Lifecycle</a>
+          <a class="chip" href="#pros">Pros and cons</a>
+          <a class="chip" href="#spotify">Spotify</a>
+        </div>
+      </div>
+      <svg class="loop" viewBox="0 0 400 400" role="img" aria-label="Agile loop: plan, build, review, release, repeating">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4F5BFF"/><stop offset="1" stop-color="#1FC9B0"/></linearGradient></defs>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
+        <g class="ring"><circle cx="200" cy="200" r="170" fill="none" stroke="url(#g)" stroke-width="3" stroke-dasharray="4 14" stroke-linecap="round"/></g>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="url(#g)" stroke-width="6" stroke-dasharray="200 742" stroke-linecap="round" transform="rotate(-100 200 200)"/>
+        <g font-family="Sora,sans-serif" font-weight="600" font-size="16" text-anchor="middle" fill="#EAEEFF">
+          <circle cx="200" cy="50" r="30" fill="#18285A" stroke="#4F5BFF" stroke-width="2"/><text x="200" y="56">Plan</text>
+          <circle cx="350" cy="200" r="30" fill="#18285A" stroke="#4F5BFF" stroke-width="2"/><text x="350" y="206">Build</text>
+          <circle cx="200" cy="350" r="30" fill="#18285A" stroke="#1FC9B0" stroke-width="2"/><text x="200" y="356">Review</text>
+          <circle cx="50" cy="200" r="30" fill="#18285A" stroke="#1FC9B0" stroke-width="2"/><text x="50" y="206">Adapt</text>
+          <text x="200" y="196" font-size="30" font-weight="800">Sprint</text>
+          <text x="200" y="224" font-size="14" fill="#A9B4DD" font-weight="400">repeat and improve</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="definition">
+  <div class="wrap def">
+    <div>
+      <h2>What is Agile?</h2>
+      <p class="quote" style="margin-top:22px">Agile is an iterative, flexible approach to software development and project management. It emphasises collaboration, continuous delivery, customer feedback and rapid adaptation to changing requirements.</p>
+    </div>
+    <div class="values">
+      <div><b>Iterative</b><br>Work is delivered in short cycles called sprints.</div>
+      <div><b>Collaborative</b><br>Customers and teams work together throughout.</div>
+      <div><b>Adaptive</b><br>Change is expected and welcomed, not resisted.</div>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="band">
+  <div class="wrap">
+    <h2>Key features</h2>
+    <p class="lead">Eight principles that shape how Agile teams plan, build and improve.</p>
+    <div class="grid g4">
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div><h3>Iterative and incremental development</h3></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M21 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div><h3>Customer collaboration</h3></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div><h3>Flexibility and adaptability</h3></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></div><h3>Focus on working software</h3></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg></div><h3>Cross-functional, self-organising teams</h3></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Prioritisation of business value</h3></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Transparency and continuous improvement</h3></div>
+      <div class="feat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg></div><h3>Feature-centric approach</h3></div>
+    </div>
+  </div>
+</section>
+
+<section id="lifecycle">
+  <div class="wrap">
+    <h2>The Agile lifecycle</h2>
+    <p class="lead">A product moves through six phases. The iteration phase repeats until the product is ready to release.</p>
+    <ol class="life">
+      <li><div class="n">1</div><b>Concept</b><span>Define the idea and scope</span></li>
+      <li><div class="n">2</div><b>Inception</b><span>Form the team and fund it</span></li>
+      <li><div class="n">3</div><b>Iteration</b><span>Build, test and review in sprints</span></li>
+      <li><div class="n">4</div><b>Release</b><span>Deliver working software</span></li>
+      <li><div class="n">5</div><b>Maintenance</b><span>Support and improve</span></li>
+      <li><div class="n">6</div><b>Retirement</b><span>Phase out the product</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="pros" class="band">
+  <div class="wrap">
+    <h2>Advantages</h2>
+    <div class="pros">
+      <div class="pro"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Flexibility and adaptability</div>
+      <div class="pro"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Faster delivery and ROI</div>
+      <div class="pro"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Improved customer satisfaction</div>
+      <div class="pro"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Higher product quality</div>
+      <div class="pro"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Better collaboration and communication</div>
+      <div class="pro"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Reduced risk</div>
+      <div class="pro"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Increased transparency and visibility</div>
+    </div>
+
+    <h2 style="margin-top:84px">Disadvantages</h2>
+    <div class="cons">
+      <div class="con"><h3>Lack of predictability</h3><p>The scope can change every sprint based on feedback. This makes it hard for project managers to give marketing launch dates, finance budgets or delivery dates for contracts.</p></div>
+      <div class="con"><h3>Team dependency</h3><p>Agile relies on a skilled, motivated and self-organised team, so speed depends on the team’s knowledge and capability. If people leave, the project loses experience and velocity, and estimates become unreliable.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="suitable">
+  <div class="wrap">
+    <h2>Suitable projects</h2>
+    <p class="lead">Agile works best where requirements evolve and feedback arrives early.</p>
+    <div class="grid g3">
+      <div class="proj"><h3>Software development</h3><p>Emphasises flexibility, collaboration and short feedback cycles. Teams break complex problems into manageable tasks and capture frequent feedback to align with customer needs.</p><span class="tag">Scrum and sprints</span></div>
+      <div class="proj"><h3>Marketing campaigns</h3><p>Agile principles are applied through frameworks like Kanban. Campaigns are refined through iterative tests of strategy, guided by real-time data.</p><span class="tag">Kanban</span></div>
+      <div class="proj"><h3>Feature-Driven Development</h3><p>Used in product development to build prototypes quickly, then test and refine them so products match user expectations and market trends.</p><span class="tag">FDD</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="spotify" class="spot">
+  <div class="wrap">
+    <h2>Real-world example: Spotify</h2>
+    <p class="lead">The Spotify model uses squads, tribes, chapters and guilds to organise teams and encourage collaboration.</p>
+    <div class="spot-grid">
+      <div class="terms">
+        <div class="term"><b>Squads</b><span>Small, cross-functional teams focused on specific features or products.</span></div>
+        <div class="term"><b>Tribes</b><span>Collections of squads working on related areas.</span></div>
+        <div class="term"><b>Chapters</b><span>Groups of people with similar skills across different squads.</span></div>
+        <div class="term"><b>Guilds</b><span>Communities of interest that span the entire organisation.</span></div>
+      </div>
+      <div>
+        <div class="nest" role="img" aria-label="Diagram: a tribe contains squads; chapters and guilds connect people across squads">
+          <b>Tribe</b>
+          <div class="sq"><b>Squad</b><i>Design</i><i>Dev</i><i>QA</i><i>Product</i></div>
+          <div class="guild">Chapters link people with the same skill across squads</div>
+          <div class="guild" style="margin-top:10px">Guilds link everyone with a shared interest</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><b>Agile methodology</b><br>Iterate. Collaborate. Deliver.</div></footer>
+</body>
+</html>
